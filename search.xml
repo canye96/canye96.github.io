@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>MySQL索引详解</title>
+      <link href="/2022/07/12/MySQL%E7%B4%A2%E5%BC%95%E8%AF%A6%E8%A7%A3/"/>
+      <url>/2022/07/12/MySQL%E7%B4%A2%E5%BC%95%E8%AF%A6%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p>server 流程的组件：连接器 –&gt; 分析器 –&gt; 优化器 –&gt; 执行器</p><ul><li><p>连接器：管理连接、验证权限</p></li><li><p>分析器：词法分析、语法分析</p></li><li><p>优化器：<strong>CBO</strong>（基于成本的优化，使用比较广泛）、RBO（基于规则的优化），组件无法进行控制。</p></li><li><p>执行器：用来跟存储引擎直接做交互</p></li></ul><p>存储引擎：innodb，myisam，menory </p><ul><li>含义：不同的数据文件在磁盘的不同组织形式</li></ul><p>innodb 与 myisam 的区别</p><ul><li>innodb 支持事务，myisam不支持</li><li>innodb支持外键，myisam不支持</li><li>innodb支持表锁和行锁，myisam只支持表锁</li><li>innodb在5.6版本之后支持全文检索，而myisam一直支持</li><li>innodb索引的叶子节点直接存放数据，而myisam存放地址</li></ul><p>innodb功能这么强大，为什么还要用myisam</p><blockquote><p>myisam是MySQL自带的原生的存储引擎，而innodb是另外一家公司开发出来的一个插件的存储引擎。在用innodb时，发现其强大之处，所以将innodb集成到MySQL里面去，而MySQL从5.5版本之后，默认的版本是innodb而不是myisam。</p><p>但myisam有一个强大的点：统计总数。</p></blockquote><p>全文索引</p><blockquote><p>案例：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有一张名为 content 的表，表中字段有 id、content、title，现在需要把这张表中 content 字段包含 java 关键字的文章都取出来，怎么操作？</span><br></pre></td></tr></table></figure><p>全文检索类似于java里面的ES（ElasticSearch），ES前身是solr，在solr之前是lucene，这些都是Java中专门做全文检索的。</p><p>在MySQL中很少用全文检索，知道其基本概念即可。</p></blockquote><p>SQL解析：antlr</p><p>扩展知识</p><blockquote><p>数据库的 token</p><p>shardingsphere 组件：用于对应的分库分表，apache的顶级项目。</p></blockquote><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p><strong>哪些数据结构可以存储键值对</strong></p><ul><li>hash</li><li>树</li></ul><p>MySQL中menory存储引擎使用hash索引，同时innodb支持自适应hash</p><p>局部性原理：数据和程序都有集聚成群的倾向，分为空间局部性和时间局部性</p><p>磁盘预读：内存跟磁盘在进行交互的时候要保证每次读取需要一个逻辑单位，而这个逻辑单位叫做页，或者叫 datapage，一般都是4k或者8k，在进行读取的时候，一般都是4k的整数倍。例如，innodb每次读取16kb的数据。</p><p>MySQL在众多树中，为什么选择B+树来存储键值对？</p><blockquote><p>B+树相比其它树，优势：</p><ul><li>是多叉树</li><li>节点有序</li><li>是一颗平衡树</li><li>每一个节点可以存储多条记录</li></ul></blockquote><p>MySQL的索引一般有几层？</p><blockquote><p>一般情况下，3到4层就足以支撑千万级别的表查询。</p></blockquote><p>创建索引的字段是长了好还是短了好？</p><blockquote><p>短了好。原因是在层数不变的情况下，可以存储更多的数据量。</p></blockquote><p>在创建表的时候，是用代理主键还是自然主键？</p><blockquote><ul><li>代理主键：跟业务无关的列；</li><li>自然主键：跟业务相关的列</li></ul><p>能使用代理主键尽可能多的使用代理主键</p></blockquote><p>主键设置好之后，要不要自增？</p><blockquote><p>在满足业务的情况下，尽可能自增。不自增会增加索引的维护成本。</p></blockquote><p>在分布式应用场景中，自增id还适用吗？</p><blockquote><p>不能适用。使用雪花算法（snowflake），也称自定义id生成器</p></blockquote><p>面试问题还有：回表、索引覆盖、最左匹配、索引下推等名词的理解。</p><p>聚簇索引与非聚簇索引的区别：数据跟索引是否聚集存储 。</p><blockquote><p>innodb的主键索引就是聚簇索引：</p><blockquote><p>必须要包含一个主键列的：key。如果在创建表的时候制定了主键，那么key就是主键；如果没有主键，那么key就是唯一键；如果唯一键也没有，那么key就是6字节的rowid。</p></blockquote><p>6字节的rowid够不够存？</p><blockquote><p>够</p></blockquote></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Hexo和GitHub搭建个人博客</title>
       <link href="/2022/07/11/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
       <url>/2022/07/11/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
