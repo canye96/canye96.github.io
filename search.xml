@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>预约挂号项目</title>
+      <link href="/2022/08/23/%E9%A2%84%E7%BA%A6%E6%8C%82%E5%8F%B7%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2022/08/23/%E9%A2%84%E7%BA%A6%E6%8C%82%E5%8F%B7%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="预约挂号项目介绍"><a href="#预约挂号项目介绍" class="headerlink" title="预约挂号项目介绍"></a>预约挂号项目介绍</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>网上预约挂号是近年来开展的一项便民的就医服务，宗旨是在缓解看病难、挂号难的就医难题，许多患者为看一次病要跑很多次医院，最终还不一定能保证看得上医生。网上预约挂号项目全面提供预约挂号等业务，从根本上解决这一就医难题。不用排长队，不用担心医生没在，可随时随地轻松挂号。</p><h3 id="项目核心技术"><a href="#项目核心技术" class="headerlink" title="项目核心技术"></a>项目核心技术</h3><h4 id="后端技术"><a href="#后端技术" class="headerlink" title="后端技术"></a>后端技术</h4><p>SpringBoot：简化新 Spring 应用的初始搭建以及开发过程。</p><p>SpringCloud：基于 SpringBoot 实现的云原生应用开发工具，Spring Cloud使用的技术：（SpringCloudGateway、SpringCloud AlibabaNacos、SpringCloud AlibabaSentinel、SpringCloudTask和SpringCloudFeign等）</p><p>MyBatis-Plus：持久层框架</p><p>Redis：内存缓存</p><p>RabbitMQ：消息中间件</p><p>HTTPClient：Http协议客户端</p><p>Swagger2：Api接口文档工具</p><p>Nginx：负载均衡</p><p>Lombok：</p><p>Mysql：关系型数据库</p><p>MongoDB：面向文档的NoSQL数据库</p><h4 id="前端技术"><a href="#前端技术" class="headerlink" title="前端技术"></a>前端技术</h4><p>Vue.js：web 界面的渐进式框架</p><p>Node.js： JavaScript 运行环境</p><p>Axios：Axios 是一个基于 promise 的 HTTP 库</p><p>NPM：包管理器</p><p>Babel：转码器</p><p>Webpack：打包工具</p><h4 id="运维技术"><a href="#运维技术" class="headerlink" title="运维技术"></a>运维技术</h4><p>Docker  ：容器技术</p><p>Git：代码管理工具 </p><h3 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h3><img src="\img\yygh\尚医通业务流程.png" style="zoom:50%;" /><h3 id="服务架构"><a href="#服务架构" class="headerlink" title="服务架构"></a>服务架构</h3><img src="\img\yygh\尚医通架构图.png" style="zoom: 33%;" />]]></content>
+      
+      
+      <categories>
+          
+          <category> 预约挂号项目 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Docker部署Redis</title>
       <link href="/2022/08/21/Docker%E9%83%A8%E7%BD%B2Redis/"/>
       <url>/2022/08/21/Docker%E9%83%A8%E7%BD%B2Redis/</url>
